@@ -1,0 +1,957 @@
+<!DOCTYPE html><html lang="pl"><head>
+    
+    <title>wirex </title>
+    <link href="css/css.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/all.css">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="referrer" content="never">
+    <meta name="googlebot" content="noindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+ <script defer="" src="js/all.js"></script>
+
+
+    <style type="text/css">
+        .footer-fixed {
+            background: rgba(0, 0, 0, .68);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            z-index: 1;
+            font-size: 36px
+        }
+
+        .footer-fixed div a,
+        .footer-fixed div p {
+            display: inline-block;
+            color: #fff;
+            font-size: 22px;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        .footer-fixed div p {
+            padding: 1px 6px;
+            line-height: 5px;
+        }
+
+        .footer-fixed div a {
+            padding: 6px 8px;
+            font-size: 21px;
+        }
+
+        .footer-fixed a {
+            padding: 20px;
+            background: #e31c02;
+            border-radius: 10px
+        }
+
+        @media (max-width: 767px) {
+            .footer-fixed div p {
+                font-size: 16px;
+                line-height: 1.2;
+                margin: 0 5px 0 0;
+                padding: 0;
+            }
+
+            .footer-fixed div a {
+                font-size: 12px;
+                padding: 9px 8px
+            }
+
+            .footer-fixed {
+                padding-top: 7px;
+                padding-bottom: 7px
+            }
+
+            .footer-fixed>div {
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                -webkit-box-orient: horizontal;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                flex-direction: row;
+            }
+        }
+    </style>
+    <style>
+        @font-face {
+            font-family: 'Roboto Slab';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'), url(fonts/BngMUXZYTXPIvIBgJJSb6ufN5qU.woff2) format('woff2');
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+
+        .glue_popup {
+            height: 450px;
+            max-width: 700px;
+            box-shadow: 0px 0px 7px #4a4a4a;
+            -moz-box-shadow: 0px 0px 7px #4a4a4a;
+            -webkit-box-shadow: 0px 0px 7px #4a4a4a;
+            background: #fff;
+            -webkit-animation: zoomin 0.4s;
+            animation: zoomin 0.4s;
+            border-radius: 5px;
+            border: 3px solid rgba(0, 51, 102, .99);
+            display: none;
+            z-index: 1000;
+            margin-left: 0 !important;
+            margin-top: 0 !important;
+            width: 100%;
+            height: unset !important;
+            padding: 10px 0;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /*向左向上分别平移自身的一半*/
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+        }
+
+        .glue_popup * {
+            font-family: "Roboto Slab";
+        }
+
+
+        .glue_close {
+            cursor: pointer;
+            position: relative;
+            top: 0px;
+            left: 0px;
+            float: right;
+            font-family: Arial;
+            font-size: 17px;
+            /*background-color: #dfdfdf;*/
+            color: #4c4c4c;
+            padding: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            text-decoration: none;
+            /*box-shadow: 0px 0px 3px #4d4d4d;
+            -moz-box-shadow: 0px 0px 3px #4d4d4d;
+            -webkit-box-shadow: 0px 0px 3px #4d4d4d;*/
+            border-radius: 0px 5px 0px 5px;
+        }
+
+        .glue_content {
+            padding: 20px;
+        }
+
+        .product-left {
+            float: left;
+            width: 40%;
+        }
+
+        .product-left a {
+            cursor: pointer;
+            transition: all 0.5s ease-in-out 0s;
+        }
+
+        .glue_popup img {
+            max-height: 450px;
+            width: 100%;
+        }
+
+        .product-right {
+            float: right;
+            width: 60%;
+        }
+
+        .product-right h1 {
+            font-size: 38px;
+            text-align: center;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0.73);
+            /*font-family: 'Open Sans Condensed', sans-serif;*/
+        }
+
+        .product-right p {
+            margin-top: 5px;
+            font-size: 18px;
+            line-height: 160%;
+            font-size: 20px;
+            letter-spacing: normal;
+            padding: 0 10px;
+            margin-top: 60px;
+        }
+
+        .offerbox1,
+        .offerbox2 {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .offerbox1 a.cta,
+        .offerbox2 a.cta {
+            display: block;
+            font-size: 18px;
+            letter-spacing: 2px;
+
+            color: #ffffff;
+            padding: 14px 25px;
+            -webkit-border-radius: 8px;
+            border-radius: 8px;
+            margin: 5px 0;
+            text-shadow: 0 1px 0 #000000;
+            /*text-transform: uppercase;*/
+            background-color: #1b4e81;
+            margin: 0 10px;
+        }
+
+        .eORIek {
+            width: 1em;
+            height: 1em;
+            animation: 0.85s linear 0s infinite normal none running kwWELU;
+        }
+
+        .offerbox1 {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .last_txt {
+            margin-top: 10px;
+        }
+
+        @media (max-width: 767px) {
+
+            .offerbox1 a.cta,
+            .offerbox2 a.cta {
+                font-size: 12px;
+                padding: 7px 2px;
+                margin: 0 5px;
+                letter-spacing: normal;
+            }
+
+            .offerbox1 {
+                margin-top: 0;
+                padding-top: 10px;
+                padding-bottom: 5px;
+            }
+
+            .product-right h1 {
+                font-size: 21px;
+            }
+
+            .product-right p {
+                margin-top: 10px;
+                font-size: 14px;
+            }
+
+            #bottombar * {
+                font-size: 14px;
+            }
+
+            .footer_left,
+            .expire-text {
+                line-height: 40px;
+            }
+
+            .public-DraftStyleDefault-block {
+                padding-left: 11px;
+                font-size: 14px;
+            }
+        }
+
+
+        @keyframes zoomin {
+
+            0% {
+                opacity: 0.1;
+            }
+
+            40% {
+                opacity: .4;
+            }
+
+            50% {
+                opacity: .5;
+            }
+
+            60% {
+                opacity: .6;
+            }
+
+            70% {
+                opacity: .7;
+            }
+
+            80% {
+                opacity: .8;
+            }
+
+            90% {
+                opacity: .9;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+
+
+
+
+        .custom-social-proof {
+            position: fixed;
+            bottom: 90px;
+            left: 20px;
+            z-index: 9999999999999 !important;
+        }
+
+        .custom-social-proof .custom-notification {
+            width: 320px;
+            border: 0;
+            text-align: left;
+            z-index: 99999;
+            box-sizing: border-box;
+            font-weight: 400;
+            border-radius: 6px;
+            box-shadow: 2px 2px 10px 2px rgba(11, 10, 10, 0.2);
+            background-color: #fff;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .custom-social-proof .custom-notification .custom-notification-container {
+            display: flex !important;
+            align-items: center;
+            height: 80px;
+        }
+
+        .custom-social-proof .custom-notification .custom-notification-container .custom-notification-image-wrapper img {
+            max-height: 75px;
+            width: 30px;
+            margin-left: 5px;
+            overflow: hidden;
+            border-radius: 6px 0 0 6px;
+            object-fit: cover;
+            vertical-align: middle;
+        }
+
+        .custom-social-proof .custom-notification .custom-notification-container .custom-notification-content-wrapper {
+            margin: 0;
+            height: 100%;
+            color: gray;
+            padding-left: 20px;
+            padding-right: 10px;
+            border-radius: 0 6px 6px 0;
+            flex: 1;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .custom-social-proof .custom-notification .custom-notification-container .custom-notification-content-wrapper .custom-notification-content {
+            font-family: inherit !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            font-size: 14px;
+            line-height: 16px;
+        }
+
+        .custom-social-proof .custom-notification .custom-notification-container .custom-notification-content-wrapper .custom-notification-content small {
+            margin-top: 3px !important;
+            display: block !important;
+            font-size: 12px !important;
+            opacity: 0.8;
+        }
+    </style>
+  <!-- INTH_SNIPPET_TOP -->
+	</head>
+
+<body style="background-color: #FFDEAD;">
+    <header>
+        <b>wirex<br>
+            <span style="font-size: 20px;"><strong> 🔥 Egy kapszula – és egész éjjel dugni fogsz!!!
+                    🔥</strong></span>
+
+    </b></header><b>
+    <div class="topimg">
+        <a href="#formularz1"><img src="images/22.gif" alt="" class="img-responsive"></a>
+    </div>
+    <main>
+        <h1>1 kapszula = <span> 7 óra sze</span></h1>
+        <div class="golova" style="background-color: #FFDEAD;">
+            <h2>A férjem 7 órán át megállás nélkül dug, és még mindig nincs elege!</h2>
+            <ul>
+                <li><i class="fa fa-user" aria-hidden="true"></i>Jessica</li>
+                <li><i class="fa fa-eye" aria-hidden="true" style="color:#111;"></i> 34912</li>
+                <li><i class="fa fa-heart" aria-hidden="true" style="color:#ff0000;"></i> 7853</li>
+            </ul>
+        </div>
+        <div class="story">
+            <h3>- O mój Boże, po co ja to kupowałam? Ciężko mi uprawiać tyle seksu!</h3>
+            <a href="#formularz1"><img src="images/11.gif" alt="" class="img-responsive"></a>
+            <blockquote>Az új mérete elképesztő.!</blockquote>
+            <p>Sziasztok! Emlékeztek a posztomra, amiben arról panaszkodtam, hogy a férjem már nem elégít ki szexuálisan, és milyen régen volt utoljára orgazmusom? Még egy szopástól sem lett merevedése!
+            </p>
+            <p>Mindennel próbálkoztunk: Viagrától és más serkentőktől kezdve a jógáig és tantráig. Minden hiába! Továbbra sem tudott merevedést elérni, és ha sikerült is, csak néhány percig tartott.
+            </p>
+            <p>Már azt gondoltuk, hogy ezeknek a problémáknak genetikai oka lehet, vagy valamilyen betegség tünete, de a kontrollvizsgálat nem mutatott ki komoly problémát. Ekkor már nem tudtuk, mit tegyünk, és nem tudtunk megbirkózni vele...</p>
+            <p>Fiatal és gyönyörű vagyok. Már azon is gondolkodtam, hogy elhagyom őt. De a férjem csodálatos ember, a tökéletes férfi! Szeretnék vele családot alapítani, ezért meg kellett találnom a módját, hogy segítsek neki.
+            </p>
+            <blockquote>És sikerült!</blockquote>
+            <p>Egy nap egy tévéműsort néztem, ahol interjút készítettek Hugh Hefnerrel, a Playboy alapítójával (nyugodjon békében). Mindenki tudja, hogy élete végéig aktív szexuális életet élt. Amikor megkérdezték tőle, „Hogyan vagy képes ezt csinálni?” - azt válaszolta: „Minden férfinak az élete elején ugyanannyi szexuális energiája van, a lényeg, hogy ne halványuljon el az évek múlásával. Gyakran edzek, és amikor az energiám kezdi 'csökkenni', visszaállítom azt 💪💪💪 (wirex) segítségével!"</p>
+            <a href="#formularz1"><img class="img-responsive" src="images/33.gif"></a>
+            <p>Megdermedtem a képernyő előtt, és Hefner folytatta: "Mi az..."<a href="#formularz1">wirex</a>? Ez egy természetes serkentő, nagyszerű gyógymód a potencia javítására és a férfi hormonok szintjének növelésére. Régóta tudok róla...</p>
+            <p>Felkaptam a telefonomat, és megtaláltam az oldalt.<a href="#formularz1"></a><a href="#formularz1">wirex</a>és habozás nélkül rendeltem egy csomagot.</p>
+
+
+
+            <p><span class="doc-quote" style="background-color: #FFDEAD;">A szakértők azt mondják, hogy                <a href="#formularz1">wirex</a> javítja a merevedést, emeli a tesztoszteron szintet—az alapvető férfi hormont. A gyógyszer rendszeres szedése fokozza a szexuális vágyat, növeli a pénisz hosszát és fokozza az orgazmusokat.
+                </span></p>
+            <blockquote>Most a mi eredményeinkről.            </blockquote>
+            <p>A rendelés meglehetősen gyorsan megérkezett. Másnap reggel adtam a férjemnek. És így ment ez minden nap.
+            </p>
+            <p>Az első eredmények körülbelül egy héttel később jelentkeztek. Még csak álmodni sem mertem ilyen erős hatásról! Nem gondoltam, hogy Michał képes lenne ilyesmire!
+            </p>
+            <a href="#formularz1"><img src="images/44.gif" alt="" class="img-responsive"></a>
+            <p id="last">Elhinned vagy sem, de az anális szex, amivel kezdeni akart, 47 percig tartott! És ez 2 év szexhiány után történt! Mély, intenzív szex szünet nélkül! Végre éreztem, hogy élek. 😋😆🍌🍌🍌</p>
+            <p>Hihetetlen élvezet! Izzadás, nyögés, mint a legjobb pornófilmekben. Úgy éreztem, mintha 3 férfival szeretkeznék egyszerre!</p>
+            <p><a href="#formularz1">wirex</a> Visszaállította a szexuális életünket a helyes útra. Michał nemcsak szexuális óriássá vált, hanem a szexuális óriások királyává is!</p>
+            <p>Most 2-3 órán át képes intenzív szexet folytatni. Ilyen eredményért akár 1000 zł-t is fizetnék. Ha nem lennék elfoglalva más dolgokkal, folyamatosan csinálnám! Étkezési szünetekkel. Az élet olyan rövid, hogy nem szabad megfosztani magunkat az örömtől! 👌😁💓💓💓</p>
+            <a href="#formularz1"><img src="images/55.gif" alt="" class="img-responsive"></a>
+            <p>Michał naponta egy kapszulát szedett, és boldogabbak voltunk, mint valaha. A használat után                <a href="#formularz1">wirex</a>
+                a pénisze 5 cm-rel megnőtt! Azt mondják, hogy ez a tesztoszteronszint növekedésének köszönhető. Köszönet a
+                <a href="#formularz1">wirex</a>a férjem „megfeleltetéséért”!</p>
+            <p>Michał nem szed                <a href="#formularz1">wirex</a> már 3 hónapja, de a szexünk még mindig órákig tart. Teljesen elégedett vagyok! Most jobb teste van, mint a sportolóknak - a tesztoszteron csodákra képes :)</p>
+            <p>A dolog az, hogy amikor utoljára kapcsolatba léptem a <a href="#formularz1">wirex</a> gyártójával rendelés leadására,
+                azt mondták, hogy a hatás tartós, és nincs szükség a gyógyszer folyamatos szedésére. Ahogy látható, már 3 hónap telt el, és még mindig működik :)
+            </p>
+            <p>Maradt egy csomagom arra az esetre, ha szükségünk lenne rá!</p> <p>Ajánlom ezt a gyógyszert a potencia problémákkal küzdő férfiaknak. Ha szeretnéd javítani a szexuális életedet Viagra szedése nélkül, a <a href="#formularz1">wirex</a> a legjobb választás!</p> <p id="last"><a href="#formularz1">Látogass el a gyártó hivatalos weboldalára!</a></p>
+        </div>
+        <div class="toland" style="background-color: red; color: white;z-index:1; ">
+            <span style="color: white;"><s>20000 HUF</s><br>
+                <span style="color: rgb(17, 247, 17)">9900 HUF</span>
+            </span> Promocja trwa do:
+
+            <strong>
+                <script type="text/javascript">
+                    var d = new Date();
+                    var day = d.getDate();
+                    var month = d.getMonth() + 1;
+                    var year = d.getFullYear();
+                    document.write(day + "." + month + "." + year + " " + "23:59");
+                </script>22.10.2024 23:59</strong>
+        </div>
+        <div class="buynow " style="text-align:center; background-color: #FFDEAD;">
+
+
+            <a href="#formularz1"><img alt="" class="order_widget-img" src="images/velofel.png" width="00" height="150"></a>
+            <ul>
+                <li><i class="fa fa-check"></i>Óriási erekció</li> <li><i class="fa fa-check"></i>100% természetes termék</li> <li><i class="fa fa-check"></i>Hosszabb szexuális kapcsolat</li> <li><i class="fa fa-check"></i>Jobb szexuális élet</li> <li><i class="fa fa-check"></i>Nagyon magas libidó</li>
+            </ul>
+            <div class="form_wrapper_2" style="margin: 0 auto; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 50%">
+                <form id="formularz1" method="post" class="formularz-walidacja__form orderForm  " style="width: 100%; text-align: center; margin: 0 auto;">
+				
+                    <br>
+                
+                    <div class="form-input" style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+                        <input class="input-name" type="text" name="name" style="margin: 5px 0; border: none; border-bottom: 1px solid lightgray; text-align: center; padding: 10px 20px; width: 100%;" required="" placeholder="Név és vezetéknév">
+                        <input class="phone-country" type="tel" id="phone" name="phone" style="margin: 5px 0; border: none; border-bottom: 1px solid lightgray; text-align: center; padding: 10px 20px; width: 100%;" placeholder=" Telefonszám" onkeyup="this.value=this.value.replace(/\s/,'')" minlength="5" required="" title="Proszę wpisać numer zgodnie z przykładem: +48123456789 lub 123456789">
+                    </div>
+                    <div class="formularz-walidacja__form--submit submit-container">
+                        <button type="submit" style="padding: 10px 80px;
+                    font-size: 24px; cursor: pointer;
+                    font-weight: 600;
+                    color: #fff;
+                    background-color: #c01e14;
+                    margin: 30px 0px;
+                    border-radius: 10px;
+                    border: none;
+                    -webkit-box-shadow: 0 15px 5px -4px rgba(192, 30, 20, .75);
+                    box-shadow: 0 15px 5px -4px rgba(192, 30, 20, .75);" class="submit-container--btn-2">Küldés</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="commentarios">Hozzászólások</div>
+        <div class="comenti">
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="data:image/webp;base64,UklGRrADAABXRUJQVlA4IKQDAADQDwCdASomACYAPm0skkckIiGhKrqqqIANiWwAnTKEfK+b+YJUutTGk5EdJDbY7gDeQ95e8lWsO84PruQ6SrWM6J3EB3F/FomAM9v037BRdbXxXVTlIOCagOQ/3Ct53ltEgH3YY+N9F17JW0cAjtiU3cLCRBPdhVRQrbN+G9o+tcdY3pK1tngA/v0/1v+K6SagIuPONlcu8W/66ZmCxTp3jIssiopBLgVFc4XteP/uFiQQ7zyZOHEj4Q2R9Ilovr/+CiqPxqgY9bTCtPDCK/ymetmPb9pT97oiT/Q4TyrbBudawnDG+gNWA/iHEcvB0MS17ImUMNSwi++j250dPO4H0scitw5yZxRdSDJDu9qXLM9kuvGH4/f+f9vfxStf3r0FmPkaIwV4Q84m76c3o3bsAkKRPDrT5RLX/BoqGctvwrYeqDkPn8LkelTJEQxeaaz//1yzgRq3u97rWIERXsrUPIpW5/6iGyK/MRAVx9+4ztajCxe7Cbo/Aoj/Q86zP+MRVRS7SWDuqDv7WlWZvUj1vZrQ/FTdcvimuY8rgvKma1iXWrm1Ri25v48niSXJWrrCzy2S/eal4TtKva52qn/mUARlct+GteNOjc4zpCvXXxl5994q3F+TQ/1fLvgAUSbs11m52GLhk+CDZGU57veup9jvdiWDwZv5IEILu2H+N8EeV8983uLqGruMQXPOUMaieuXkPSNrZIS+01YQ4ZAUYhMm5T5eFm6/YpxQvc4C6lV5U80sWyhsH+6FdvpIRZkhAhDiurRo1oJzsczThg6ROAVAmQZG/w5BErvlULffDk7AwLlAwXRwva3pFhszk785USmMJ3GqtlzYb2+mlQli/1r2gyy0uRmkplLGDRsitz1RQOQ6aRDqEO0M7XXqtXaC871CJSNjgV935Zx+VY+rb2pMGkC8e0cpDzoJ763INqzgTBtCyfj3w6kOo5bqrcYrumujzIxBr5BzecjO4XuEGfcnkdJPjZT3tUmGbo1ax3z4m6X+ZkqHXMSAO4fOsZZs3Pmse2PyAZLaoBRx5tPza9R9pLLe1VJbcP9R6j/OBc+/nof4sbIdTeHnX98/hkSV0oyZHYQ7joDcEbH0//rAzJmq5H9kQFd4tbpYbYNMNoZ44KGBm8RK58D7L9x5jGSZPy63ttoGRX/+6Cff2dSGB9pRtYrPMky/+Gd6GDCtooqkQ+DpJzzzRl5yZdxZ3WGOdpfDvxcZ80HlX6Xze+v/0C4AAA==" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Alicja</a></p>
+                    <p class="comment">5 évig éltem a volt barátommal, és ezalatt az idő alatt nem szerettem a szexet a gyenge pénisze miatt. Szakítottunk, és találkoztam az álmaim férfijával. Meglepett az ágyban: órákig tudunk szexelni, és a pénisze mindig kőkemény! Azt mondta, hogy ez...
+
+                        <a href="#formularz1"></a><a href="#formularz1">wirex</a>annyira sok energiát ad neki!</p>
+
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="data:image/webp;base64,UklGRvgCAABXRUJQVlA4IOwCAADwDQCdASomACYAPm0sjkWkIqEXFZhABsS2AE6ZnIVXzPjRujevNdHoX865plPoAfqBObWLVprSPv0zAWAHGB3z+E9UfMIK1KcAN4q7Ar4Yuw5x0lS9XIGxa866iGJ4f/9ingEkp13TRmKX75mSv9ueGGLOLzgQeAAA/ugNuA2aQnZIvawh6Ej+VDnxHly4cYxOA3rLxvmPVcK3n+1gIrbeQe1LxNOi7ND2beyLJkfNYWuk+vtA4DMYTg4XF+WTlTds+WLE/hR0xkT/jEbId1YzHBur/ypYXMTP1dHliJ4Fj9PUCbfXMN6PsYvSrZvvqnfBeLmYsJ06xHque37MePW/CBdTEnMf00Cx3PzX/zIwzUOI9yZ938PbYvR5B1+9NXeyOICLcTjlooqLl5fH8u7YbrURbteLOBW82rNTH69TLkCTCfHfOnvbwybIp9+z9f3w6qROgNpIwvpb3X5Aa1EC2vgAzxP+urTOLCXq0YpiRLq2JRcIapztgyjKBCYgRLYHDAfFyQX2MNKKVw+faa9YBEb708k+2OaVuaO1vmTGtc8iAea2K8Jhrnh8bvEW4Fr9B68YEEAosW7RA7MCiN25AEJlcnk1fDxgO36UVJoHHm/gZckCZHUx2MX244nqWfvOzxLgYm7cUdo0q/6m0QvJo8w/+1rv2iGMV089j3nOehtuqjmMXHrRKXD9Z7V7b8DE8K+7nCC4CfgtA8zmnyu8skPVvhtKPO8hLLtZoU18GUC/ahWjf3yZbsJYN/XfkX6KV0pteVCY9gg9b0se8jQybdItoxZ4H7i7+rH6M0XWc/kH1g7Ly56bJBiM4zzx/esKXnE+33k0ubqg+wZBS7pABJtLHTh6Mb9m3weTHOCG7A6qwgSP/8ddO2PVacwJAychF7uHcFYs/GihQevndD8Yu1OkFtfdFJelB6qHt6S/oT5KvP+QXtSG0swVIR4xoyZRWQ8vfL9ZjkFFS2HOnzrP3FvbUOUm0QBiDeAA" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Grzesiek</a></p>
+                    <p class="comment"> Ez varázslat! Egy hónapja használom<a href="#formularz1">wirex</a> és az eredmények felülmúlták a legmerészebb elvárásaimat! Most már minden nő utánam szalad—az erekcióm megőrjíti őket. Korábban a kapcsolatok csak néhány percig tartottak; olyan gyorsan befejeztem, de most órákig tudok szexelni! Köszönöm </p>
+                    <a href="#formularz1"><img class="comimg" src="images/c1.gif" alt=""></a>
+                    <a href="#formularz1"><img class="comimg" src="images/1.png" alt=""></a>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-03.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Daniel</a></p>
+                    <p class="comment">Használom egy hónapja. Őszintén szólva, azt hittem, hogy ezek az összes gyógymód átverés és csak arra szolgálnak, hogy megkopasszanak minket. Azonban sok pozitív véleménye van, és ez az alacsony ár miatt úgy döntöttem, hogy kipróbálom. Az erekcióm jelentősen erősebb lett, és még az ejakuláció után is megmaradt. Mintha ez még nem lenne elég, +4 cm-t nyertem!
+                        <a href="#formularz1">wirex</a> Segít mindenkinek, akinek potencia problémái vannak..</p>
+                    <a href="#formularz1"></a>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-06.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">"Robert</a></p>
+                    <p class="comment">A bátyám azt mondta, hogy sokan használják. Én magam nem használtam, de a sok pozitív vélemény alapján tényleg működik.
+                    </p>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-08.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Malwina</a></p>
+                    <p class="comment">Remek történet. Elolvastam, és úgy döntöttem, hogy megrendelem a barátomnak; ki fogom próbálni.
+                    </p>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-07.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Krzysiek</a></p>
+                    <p class="comment"> Két hetes tapasztalatom van a szedésével.<a href="#formularz1">wirex</a> i
+                        Meg tudom erősíteni, hogy szuper hatása van. Diagnosztizáltak nálam erekciós zavarokat, de ezeknek a kapszuláknak köszönhetően sikerült megszabadulnom tőle!
+</p>
+                    <a href="#formularz1"><img class="comimg" src="images/c2.gif" alt=""></a>
+                    <a href="#formularz1"><img class="comimg" src="images/3xdc.png" alt=""></a>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-09.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Daniel</a></p>
+                    <p class="comment">Rendeltem 3 csomagot, és várom a szállítmányt; remélem, nekem is segít!</p>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-13.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Paweł</a></p>
+                    <p class="comment">Wow, mi egy történet! Olyan feleséget akarok!</p>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-11.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Dominika</a></p>
+                    <p class="comment">Az egyik barátom használta, és nagyon elégedett az eredményekkel.;))</p>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-12.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Kasia</a></p>
+                    <p class="comment">Köszönöm az információt, rendeltem a férjemnek. A csomag tegnap érkezett, így izgatottan várjuk az első eredményeket.
+
+                    </p>
+                    <a href="#formularz1"><img class="comimg" src="images/c3.jpg" alt=""></a>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-14.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Olek</a></p>
+                    <p class="comment"> Ez lehetővé tette számomra, hogy folyamatosan szexeljek megszakítás nélkül!!!</p>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-15.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Darek</a></p>
+                    <p class="comment">Működik! Az erekcióm sok kívánnivalót hagyott maga után, de most minden megváltozott! És a méretem végre elégedett minden környékbeli lánnyal  ;)</p>
+                    <a href="#formularz1"><img class="comimg" src="images/c4.gif" alt=""></a>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-17.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Jacek</a></p>
+                    <p class="comment">A feleségem nem érti, mi történt! De nagyon tetszik neki~ ;) Még a folyamatos veszekedéseink is megszűntek. Az hivatalos gyártói weboldalon rendeltem, a csomag 2 napon belül érkezik.)</p>
+                    <a href="#formularz1"><img class="comimg" src="images/12xs.png" alt=""></a>
+                </div> 
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-20.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Artur</a></p>
+                    <p class="comment">Éppen most kaptam meg a csomagot, és elkezdem használni; később megosztom a véleményemet.
+                    </p>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-21.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Janek</a></p>
+                    <p class="comment">Szuper hatás jó áron, még gyorsabb szállítás, késedelem nélkül</p>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-19.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Natalia</a></p>
+                    <p class="comment">Remélem, hogy ez mindenkinek segít, ahogy a barátomnak is ;) </p>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-22.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Dominik</a></p>
+                    <p class="comment">Használtam a <a href="#formularz1">wirex</a>-t egy ideje. A hónapos kúra után a péniszem 5 cm-rel nőtt,
+                        az erekcióm erős lett, mint még soha, és órákig tudtam szexelni, újra és újra. Most már fél éve
+                        volt a kúra, és az eredmények továbbra is ugyanolyanok. Ajánlom!</p>
+                        <a href="#formularz1"><img class="comimg" src="images/2cc.png" alt=""></a>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-23.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Patryk</a></p>
+                    <p class="comment">Úgy döntöttem, hogy kísérletet végzek, anélkül, hogy bármit mondanék a feleségemnek. Amint
+                        megkaptam a rendelést, elkezdtem rendszeresen használni a <a href="#formularz1">wirex</a>-t, és két hét
+                        elteltével nemcsak én voltam lenyűgözve! A feleségem nem tudta elhinni, hogy többször is tudok szexelni
+                        egy éjszaka alatt, előzetes magömlés nélkül! Soha nem volt még ilyen az életemben!</p>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-24.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Wojtek</a></p>
+                    <p class="comment">Nem tudom, hol tudom megrendelni... valaki megadná ennek az oldalnak az adreszét?</p>
+                </div>
+            </div>
+            <div class="coma">
+                <div class="col-avatar"><a href="#formularz1"><img src="images/av-27.jpg" alt="" class="img-circle"></a></div>
+                <div class="col-comm-text">
+                    <p class="nickname"><a href="#formularz1">Zośka</a></p>
+                    <p class="comment">A link fent található. Ha nem találod, kattints ide – a gyártó hivatalos
+                        oldala. A legjobb, ha nem rendelsz máshol. Más oldalakon hamisítványokat árulhatnak.</p>
+                </div>
+            </div>
+            
+        <div class="otros-commentarios"><a href="#formularz1">Más kommentek</a></div>
+        <h2 style="font-size: 48px; color: red; text-transform: uppercase; font-weight: 700;">Rendeld meg most!        </h2>
+        <div class="form_wrapper_2" style="margin: 0 auto; display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%">
+
+            <form id="formularz1" method="post" class="formularz-walidacja__form orderForm  " style="width: 100%; text-align: center; margin: 0 auto;">
+		
+                <br>
+            
+                <div class="form-input" style="display: flex; justify-content: center; align-items: center; flex-direction: column">
+                    <input class="input-name" type="text" name="name" style="margin: 5px 0; border: none; border-bottom: 1px solid lightgray; text-align: center; padding: 10px 20px; width: 100%;" required="" placeholder="Név és vezetéknév">
+                    <input class="phone-country" type="tel" id="phone2" name="phone" style="margin: 5px 0; border: none; border-bottom: 1px solid lightgray; text-align: center; padding: 10px 20px; width: 100%;" placeholder=" Telefonszám" onkeyup="this.value=this.value.replace(/\s/,'')" minlength="5" required="" title="Proszę wpisać numer zgodnie z przykładem: +48123456789 lub 123456789">
+                </div>
+                <div class="formularz-walidacja__form--submit submit-container">
+                    <button type="submit" style="padding: 10px 80px;
+            font-size: 24px; cursor: pointer;
+            font-weight: 600;
+            color: #fff;
+            background-color: #c01e14;
+            margin: 30px 0px;
+            border-radius: 10px;
+            border: none;
+            -webkit-box-shadow: 0 15px 5px -4px rgba(192, 30, 20, .75);
+            box-shadow: 0 15px 5px -4px rgba(192, 30, 20, .75);" class="submit-container--btn-2">Küldés</button>
+
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="offset-md-2 col-md-8 offset-sm-0 col-sm-12">
+                    <div class="col-md-5 col-sm-6 col-5"><b>wirex</b> HU</div>
+                    <div class="socialicons">
+                        <a href="#formularz1"><i class="fa fa-rss" aria-hidden="true"></i></a>
+                        <a href="#formularz1"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                        <a href="#formularz1"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                        <a href="#formularz1"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#formularz1"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <style type="text/css">
+        #scroll {
+
+
+            background-color: rgba(0, 0, 0, 0.7);
+            height: 100%;
+
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+            top: 0;
+            left: 0;
+
+        }
+
+
+
+
+        .pulse {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px;
+            color: white;
+            font-size: 2em;
+            height: 50px;
+            animation: radial-pulse 1s infinite;
+            border-radius: 10px;
+        }
+
+        .wrapper {
+            background-color: red;
+            height: 50px;
+            width: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .right {
+            width: 70%;
+            font-size: 1em;
+            color: black;
+            max-width: 500px;
+        }
+
+        .left {
+            width: 30%;
+            max-width: 250px;
+        }
+
+        .flex-kek {
+            background: #FFF4E8;
+            color: white;
+            border: solid 1px black;
+            border-radius: 0.5em;
+            padding: 10px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            display: flex;
+            width: 80%;
+            max-width: 750px;
+        }
+
+        @keyframes radial-pulse {
+            0% {
+                box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.5);
+            }
+
+            100% {
+                box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+            }
+        }
+
+        .left img {
+            width: 250px;
+            display: block;
+        }
+
+        @media screen and (max-device-width: 600px) {
+    
+
+            .flex-kek {
+                display: block;
+                width: 85%;
+            }
+
+            .left {
+                width: 100%;
+
+            }
+
+            .left img {
+                width: 100px;
+            }
+
+            .right {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+
+
+    <style type="text/css">
+        .pulsse {
+            width: 60px;
+            height: 60px;
+            color: #fff;
+            text-align: center;
+            background: #ff0000;
+            border-radius: 50%;
+        }
+
+        .dws {
+            position: fixed;
+            bottom: 80%;
+            left: 87%;
+            transform: translate(-50%, -50%);
+            z-index: 9;
+            float: right;
+        }
+
+        .phone {
+
+            position: absolute;
+            font-size: 25px;
+            font-size: 39px;
+            text-align: center;
+            width: 90px;
+            height: 90px;
+            line-height: 94px;
+            top: 17px;
+
+        }
+
+        .text {
+            position: relative;
+            text-transform: uppercase;
+            font-weight: 700;
+            top: 33px;
+            font-size: 9px;
+            /*opacity: 0;*/
+        }
+
+      
+
+        .pulsse:hover .text {
+            transform: scaleX(1);
+            transition: .5s ease-in-out;
+            opacity: 1;
+        }
+
+        @keyframes phone {
+
+            0%,
+            100% {
+                transform: rotate(-20deg);
+            }
+
+            50% {
+                transform: rotate(21deg);
+            }
+        }
+
+ 
+
+        .phone i {
+            transition: .5s ease-in-out;
+        }
+
+        .pulsse::before {
+            content: '';
+            position: absolute;
+            border: 1px solid #ff0000;
+            left: -20px;
+            right: -20px;
+            top: -20px;
+            bottom: -20px;
+            border-radius: 50%;
+            animation: pulse 1.8s linear infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .pulsse::after {
+            animation-delay: .5s;
+        }
+
+
+
+        .pulse,
+        .bloc,
+        .phone {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            color: #fff;
+            text-align: center;
+        }
+
+        .bloc {
+            cursor: pointer;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .pulse:hover {
+            background: #29AEE3;
+        }
+
+        .pulsse {
+            position: relative;
+            color: #fff;
+            background: #ff0000;
+            transition: .5s;
+        }
+
+
+        .fa-gift:before {
+            content: "\f06b";
+            position: relative;
+            bottom: 46px;
+            right: 15px;
+        }
+    </style>
+    <!-- load jQuery 3_5_1 -->
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        var jQuery_3_5_1 = $.noConflict(true);
+    </script>
+    <!-- end load -->
+
+
+</b>
+
+   <!-- INTH_SNIPPET_BOTTOM -->
+
+</body></html>
